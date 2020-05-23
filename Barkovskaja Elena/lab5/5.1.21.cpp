@@ -40,7 +40,7 @@ MNumber LongDivShort(MNumber n1, int del);//возвращает результ�
 MNumber LongModShort(MNumber n1, int del);//возвращает остаток от деления многоразрядного числа на короткое число типа int
 int Equal(MNumber p1, MNumber p2);//сравнение двух многоразрядных чисел(0 - числа равны, 1 – первое число больше, -1 – второе число больше)
 MNumber LongMulShort(MNumber n1, int x);//возвращает результат умножения многоразрядного числа на короткое число типа int.
-
+void Remove(MNumber number);//удаляет структуру
 
 int main()
 {
@@ -60,16 +60,21 @@ int main()
     MNumber c = LongDivShort(a, n3);
     printf("LongDivShort = ");
     PrintMNumber(c);
+    Remove(с);
     MNumber c1 = LongModShort(a, n3);
     printf("LongModShort = ");
     PrintMNumber(c1);
+    Remove(с);
     printf("Long(1)MulShort = ");
     MNumber d1 = LongMulShort(a, n3);
     PrintMNumber(d1);
+    Remove(d1);
     printf("Long(2)MulShort = ");
     MNumber d2 = LongMulShort(b, n3);
     PrintMNumber(d2);
-
+    Remove(d2);
+    Remove(a);
+    Remove(b);
 }
 
 MNumber CreateMNumber(char initStr[])
@@ -196,4 +201,15 @@ void PrintMNumber(MNumber number)
         p = p->next;
     }
     printf("\n");
+}
+void Remove(MNumber number)
+{
+    Item* temp;
+    while (number.head)
+    {
+        temp = number.head;
+        number.head = number.head->next;
+        free(temp);
+    }
+    free(number.head);
 }
