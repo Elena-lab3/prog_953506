@@ -26,6 +26,7 @@ struct tree {
 
 struct tree* root; // начальная вершина дерева 
 void print_tree(struct tree* root, int l,int);//выводит дерево на экран
+void treeremove(tree* root); // удаляет дерево
 struct tree* TreeBuilder(int n)//создаем пустое дерево
 {
     struct tree* r = (struct tree*) malloc(sizeof(struct tree));
@@ -84,7 +85,7 @@ int main(void)
     
     fclose(fp);
     print_tree(root, 0, countNum);
-
+    treeremove(root);
     return 0;
 }
 
@@ -99,4 +100,13 @@ void print_tree(struct tree* r, int l, int n)
     for (i = 0; i < l; ++i) printf("                 ");
     printf("%d\n", r->info);
     print_tree(r->left, l + 1,n);
+}
+void treeremove(tree* root)
+{
+        if (root != NULL)
+        {
+            treeremove(root->left);
+            treeremove(root->right);
+            free(root);
+        }
 }
