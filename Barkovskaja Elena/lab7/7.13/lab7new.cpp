@@ -14,7 +14,7 @@ int main()
     while (true)
     {
         Menu();
-        int choice = check_borders(0, 4);
+        int choice = check_borders(0, 3);
         switch (choice)
         {
         case 1:
@@ -30,12 +30,6 @@ int main()
         case 3:
             print_info(lst);
             system("pause");
-            system("cls");
-            break;
-        case 4:
-            printf("Enter Item name: ");
-            scanf("%s", name);
-            delete_Item(lst,name);
             system("cls");
             break;
         case 0:
