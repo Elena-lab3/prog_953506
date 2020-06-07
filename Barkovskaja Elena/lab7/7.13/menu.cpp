@@ -1,11 +1,11 @@
 #include "menu.h"
 void Menu()
 {
-    printf("1. Make order\n");
-    printf("2. Get new item\n");
+    printf("1. Ordering a product\n");
+    printf("2. Accept a new product\n");
     printf("3. Show info\n");
     printf("0. Exit\n");
-    printf("Choose the number: ");
+    printf("Select a number: ");
 }
 int check_borders(int left_border, int right_border)
 {
